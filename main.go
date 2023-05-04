@@ -35,6 +35,8 @@ func main() {
 		panic(err)
 	}
 
+	logger.info("Directory:", root)
+
 	binaryName := "runner"
 	fullBinaryName := filepath.Join(root, binaryName)
 
