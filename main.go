@@ -12,13 +12,13 @@ import (
 )
 
 func main() {
-	logger := newLogger(INFO)
+	logger := newLogger(ERROR)
 
 	switch os.Getenv("LOG_LEVEL") {
+	case "info":
+		logger.setLevel(INFO)
 	case "debug":
 		logger.setLevel(DEBUG)
-	case "error":
-		logger.setLevel(ERROR)
 	}
 
 	defer func() {
@@ -28,7 +28,7 @@ func main() {
 		}
 	}()
 
-	logger.info("Current PID:", os.Getpid())
+	logger.info("Main process pid:", os.Getpid())
 
 	root, err := os.Getwd()
 	if err != nil {
